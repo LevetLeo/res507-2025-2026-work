@@ -25,6 +25,14 @@ jobs:
         working-directory: labs/40-containerized-node-app/app
         run: npm test --if-present
 
+      
+
+  jobs:
+    build:
+      runs-on: ubuntu-latest
+      
+      steps:
+
       - name: Build Docker image
         run: docker build -t quote-app -f docker/Dockerfile .
         working-directory: labs/40-containerized-node-app
@@ -45,10 +53,3 @@ jobs:
         if: always()
         run: |
           docker rm -f quote-app || true
-
-  pr_validation:
-    runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request'
-    steps:
-      - name: Only for PR
-        run: echo "Job executé sur une pull request"
