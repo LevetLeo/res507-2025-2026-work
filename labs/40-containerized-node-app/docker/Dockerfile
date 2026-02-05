@@ -9,7 +9,6 @@ RUN npm ci
 
 # Copy application source
 COPY app/ ./
-awa
 ENV NODE_ENV=production
 EXPOSE 3000
 
