@@ -8,9 +8,10 @@ COPY app/package*.json ./
 RUN npm ci
 
 # Copy application source
-COPY app/
+COPY app/ ./
 
 ENV NODE_ENV=production
 EXPOSE 3000
+
 
 CMD ["npm", "start"]
