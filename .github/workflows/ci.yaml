@@ -18,11 +18,11 @@ jobs:
           node-version: "24"
 
       - name: Install dependencies
-        working-directory: app
+        working-directory: labs
         run: npm ci
 
       - name: Run tests if present
-        working-directory: app
+        working-directory: labs
         run: npm test --if-present
 
       - name: Build Docker image
@@ -44,3 +44,10 @@ jobs:
         if: always()
         run: |
           docker rm -f quote-app || true
+
+  pr_validation:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Only for PR
+        run: echo "Job executé sur une pull request"
