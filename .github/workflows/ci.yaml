@@ -28,8 +28,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: test  
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
+      # - name: Check out repository
+      #   uses: actions/checkout@v4
 
       - name: Build Docker image
         working-directory: labs/40-containerized-node-app
