@@ -5,31 +5,26 @@ on:
   pull_request:
 
 jobs:
+- job: test and dependencies
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "24"
-
       - name: Install dependencies
         working-directory: labs/40-containerized-node-app/app
         run: npm ci
-
       - name: Run tests if present
         working-directory: labs/40-containerized-node-app/app
         run: npm test --if-present
-
-      
-docker-jobs:
+        
+- job: docker
   build:
     runs-on: ubuntu-latest
-    
     steps:
     - name: Build Docker image
       run: docker build -t quote-app -f docker/Dockerfile .
