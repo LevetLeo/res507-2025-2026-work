@@ -27,7 +27,7 @@ jobs:
 
       - name: Build Docker image
         run: docker build -t quote-app -f docker/Dockerfile .
-        working-directory: labs/40-containerized-node-app/app
+        working-directory: labs/40-containerized-node-app
       - name: Run container
         run: |
           docker run -d --name quote-app -p 3000:3000 quote-app
